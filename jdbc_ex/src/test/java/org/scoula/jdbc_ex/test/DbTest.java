@@ -3,6 +3,7 @@ package org.scoula.jdbc_ex.test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.scoula.jdbc_ex.common.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -36,6 +37,14 @@ public class DbTest {
             System.out.println("2. db연결성공.");
             //com에 연결이 성공하면 연결통로에 해당하는 객체가 메모리에 생김(주소를 가짐)
             //com에 연결이 실패하면 연결통로에 해당하는 객체가 메모리에 안생김(null을 가짐)
+            Assertions.assertNotNull(con);
+        }
+
+        @Test
+        @DisplayName("JDBCUtil 라이브러리 이용 테스트 결과")
+        public void test2() {
+            Connection con = JDBCUtil.getConnection();
+            //con 객체가 null이 아니어야 테스트 통과
             Assertions.assertNotNull(con);
         }
     }
